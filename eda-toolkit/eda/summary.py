@@ -1,20 +1,29 @@
 ## no plots, no side effects just robust univariate summaries and diagnostic flags for modeling risks
 
-## in case R breaks
+## in case R
 # library(reticulate)
 # 
 # py_install(
-#   packages = c("numpy", "pandas", "scipy", "matplotlib", "statsmodels"),
+#   packages = c("numpy", "pandas", "scipy", "matplotlib", "statsmodels", "kagglehub"),
 #   pip = TRUE
 # )
 
+## Download latest version of dataset
+# print("Path to dataset files:", path)
+# print(os.listdir(path))
 
-
+import kagglehub
+import os
 import numpy as np
 import pandas as pd
 import statistics
 from scipy import stats
 np.random.seed(42)
+
+
+path = kagglehub.dataset_download("yasserh/wine-quality-dataset")
+csv_path = os.path.join(path, "WineQT.csv")
+wine_df = pd.read_csv(csv_path)
 
 
 
@@ -154,13 +163,7 @@ test_df = pd.DataFrame({
 
 # rsummary(test_df)
 
-
-
-
-
-
-
-
+# rsummary(wine_df)
 
 
 
